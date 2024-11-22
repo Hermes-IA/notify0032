@@ -101,7 +101,7 @@
 			<div class="swiper-wrapper">
 				<div class="swiper-slide"><img src="" id="image1" /></div>
 				<div class="swiper-slide"><img src="./publiSliders/vincula.jpg" /></div>
-				<div class="swiper-slide" ><img src="" id="image2" /></div>
+				<div class="swiper-slide"><img src="" id="image2" /></div>
 				<div class="swiper-slide"><img src="" id="image3" /></div>
 			</div>
 		</div>
@@ -306,7 +306,7 @@
 		} */
 
 
- 
+
 
 
 		document.getElementById("btnMov").addEventListener("click", function () {
@@ -359,9 +359,9 @@
 			const puntoMedio = anchoImagen / 3;
 			if (posX < puntoMedio) {
 				window.open("miperfil/miperfil.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
-			}  
+			}
 
-			if(posX > anchoImagen * (3/4)){
+			if (posX > anchoImagen * (3 / 4)) {
 				window.open('config.html', '_self');
 			}
 		});
@@ -394,14 +394,14 @@
 				document.getElementById("img1").src = "images/br/img1Br.jpg";
 				document.getElementById("img2").src = "images/br/img2Br.jpg";
 				document.getElementById("imgPie").src = "images/br/barraAbajoBr.png";
-
-
-
-
-
 			} else if (posX < tercio2) {
 				// Clic en el tercio central
-				window.open("pagoqr/monto/monto.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
+				try {
+					window.ReactNativeWebView.postMessage('Pagar QR');
+				} catch (error) {
+					console.error('Ha ocurrido un error:', error.message);
+				}
+
 			} else {
 				// Clic en el tercio derecho
 				localStorage.clear();
