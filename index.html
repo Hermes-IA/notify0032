@@ -356,12 +356,13 @@
 		document.getElementById("div1").addEventListener("click", function () {
 			const posX = event.clientX - event.target.getBoundingClientRect().left;
 			const anchoImagen = event.target.offsetWidth;
-			const puntoMedio = anchoImagen / 2;
+			const puntoMedio = anchoImagen / 3;
 			if (posX < puntoMedio) {
 				window.open("miperfil/miperfil.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
-			} else {
-				window.open('config.html', '_self');
+			}  
 
+			if(posX > anchoImagen * (2/3)){
+				window.open('config.html', '_self');
 			}
 		});
 
