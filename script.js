@@ -1,4 +1,15 @@
 
+// Deshabilitar selección de texto
+document.body.style.userSelect = 'none'; // Para la mayoría de los navegadores
+document.body.style.webkitUserSelect = 'none'; // Para WebKit (Safari, Chrome)
+document.body.style.msUserSelect = 'none'; // Para IE/Edge
+
+// Deshabilitar el menú contextual (clic derecho o mantener presionado)
+document.body.addEventListener('contextmenu', function(event) {
+  event.preventDefault(); // Prevenir la acción predeterminada (mostrar el menú contextual)
+});
+
+
 async function obtenerTasa() {
     try {
 	const response = await fetch('https://servicios-bd.vercel.app/get-tasa');
