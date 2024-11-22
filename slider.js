@@ -23,7 +23,7 @@ const imageUrlMap = {
 function getRandomPrincipalImage() {
     const principalImages = []; 
     for (let i = 1; i <= totalPrincipal; i++) {  
-        principalImages.push(`/publiSliders/principal${i}.jpg`);
+        principalImages.push(`./publiSliders/principal${i}.jpg`);
     }
 
     // Seleccionamos una imagen aleatoria de la lista
@@ -34,7 +34,7 @@ function getRandomPrincipalImage() {
 function getRandomSliderImage() {
     const sliderImages = []; 
     for (let i = 1; i <= totalSliders; i++) {
-        sliderImages.push(`/publiSliders/slider${i}.jpg`);
+        sliderImages.push(`./publiSliders/slider${i}.jpg`);
     }
 
     // Seleccionamos una imagen aleatoria de la lista
