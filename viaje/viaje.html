@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- ?RemiNombre=juan carlos&RemiCuit=2020202020&RemiCbu=0000003100020309466233&RemiSaldo=52550&RemiMotivo=varios&DestiNombre1=Play Mendoza S.A.-&DestiNombre2=Play Mendoza S.A. Play Mendoza S.A.&DestiAlias=petra.dance.2023&DestiCbuDest=000000005555555&DestiCuit=2203333323030&DestiCuenta=Mercado Pago&DestiTipo=Cuenta digital&DestiImagen=no&monto=0&hora=Actual&TresCod=777 -->
+
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+	<div id="loader" style="display: flex; justify-content: center; align-items: center; position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);">
+		<!-- Spinner -->
+		<div class="spinner"></div>
+	</div>
+
+	<div id="content" style="display: none;">
+		<img id="image" src="imagen.png" style="width: 100%;"></img>
+	</div>
+	<script>
+		window.onload = function () {
+			var loader = document.getElementById("loader");
+			var content = document.getElementById("content");
+			setTimeout(function () {
+				// Ocultar el mensaje de carga y mostrar el contenido de la página
+				loader.style.display = "none";
+				content.style.display = "block";
+
+			}, 1000);
+
+
+		};
+
+		document.getElementById("image").addEventListener('click', function () {
+			window.history.back();
+
+		});
+
+		window.addEventListener('goBack', function () {
+			window.history.back();
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<img id="enca" src="enca.png" style="width: 100%;"></img>
+    <div id="loader">
+        <img id="pre" src="loading.png" style="width: 100%;"></img>
+    </div>
+
+    <div id="content" style="display: none;">		
+        <img id="image" src="imagen.png" style="width: 100%;"></img>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Esperar a que el documento esté listo
+
+            var loader = $("#loader");
+            var content = $("#content");
+
+            $("#pre").animate({
+                opacity: 0.5 // Cambia la opacidad al 20%
+            },250); //  
+			$("#pre").animate({
+                opacity: 1  
+            }, 300); 
+			$("#pre").animate({
+                opacity: 0.5 // Cambia la opacidad al 20%
+            },300); //  
+			$("#pre").animate({
+                opacity: 1  
+            }, 300); 
+			$("#pre").animate({
+                opacity: 0.5 // Cambia la opacidad al 20%
+            },300); //  
+			$("#pre").animate({
+                opacity: 1  
+            }, 300); 
+			
+
+            setTimeout(function () { 
+                loader.hide();
+                content.show();
+            }, 1200);  
+
+ 
+
+            window.addEventListener('goBack', function () {
+                window.history.back();
+            });
+        });
+
+
+        document.getElementById("image").addEventListener("click", function () {
+			window.open("continuar/continuar.html", '_self');
+		});
+    </script>
+</body>
+
+</html>

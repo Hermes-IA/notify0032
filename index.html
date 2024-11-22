@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!-- ?RemiNombre=juan carlos&RemiCuit=2020202020&RemiCbu=0000003100020309466233&RemiSaldo=52550&RemiMotivo=varios&DestiNombre1=Play Mendoza S.A.-&DestiNombre2=Play Mendoza S.A. Play Mendoza S.A.&DestiAlias=petra.dance.2023&DestiCbuDest=000000005555555&DestiCuit=2203333323030&DestiCuenta=Mercado Pago&DestiTipo=Cuenta digital&DestiImagen=no&monto=0&hora=Actual&TresCod=777 -->
+
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+	<link rel="stylesheet" href="sliderCss.css">
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+	<div id="loader" style="display: flex; justify-content: center; align-items: center;">
+		<!-- Spinner -->
+		<div class="spinner"></div>
+	</div>
+
+	<div id="content" style="display: none;">
+
+
+		<div id="div1">
+			<img src="images/enca.jpg"></img>
+
+			<div id="nombree">
+				<span id="inicialesSpan"
+					style="text-transform: uppercase; color: #333;margin-right: 2%;letter-spacing: 1px;font-size: 0.9em;"></span>
+				<span> <span id="hola">Hola, </span><span id="tit" style="text-transform: lowercase;">carlos</span> <i
+						class="fa-solid fa-chevron-right fa-xs" style="color: #ffffff;"></i></span>
+			</div>
+
+			<img class="fa-regular fa-eye eye-icon" id="eye-icon-barra" style="width: 7%;"
+				src="images/eyes/open-eye-barra.jpg">
+
+
+		</div>
+		<!-- Script animacion barra superior -->
+		<script>
+			let lastScrollTop = 0;
+			const header = document.getElementById('div1');
+			const threshold = 50;
+
+			window.addEventListener('scroll', () => {
+				const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				if (scrollTop > threshold) {
+					header.classList.add('scrolled');
+				} else {
+					header.classList.remove('scrolled');
+				}
+
+				lastScrollTop = scrollTop;
+			});
+		</script>
+		<!-- Fin animacion barra superior -->
+
+		<div id="div2">
+			<div id="enc1">
+				<div id="izquierda">
+					<b><span>Disponible  </span><span
+							style="font-size: 0.7em;color:#06a444;background:#27ca272b;border-radius:12px;padding-right:6%;padding-left:6%;padding-top:2%;padding-bottom:2%">▲ <span
+								id="tasa" style="font-size: 0.9em;">31,8</span>%</span>
+				</div>
+				<div id="der2">
+					<span id="btnMov" style="color:#3aa3ff">Ir a movimientos <i class="fa-solid fa-chevron-right fa-xs"
+							style="color: #3aa3ff;"></i></span>
+				</div></b>
+			</div>
+
+			<div id="enc2">
+				<b><span id="signito" style="font-size:30px; margin-right:5px;">$</span><span id="sald"
+						style="font-size:30px;"></span><span id="dec" style="font-size: 0.8em;
+						margin-left: 2px;
+						position: relative;
+						bottom: 0.9em;">36</span></b>   
+				<div
+					style="display: inline-block; background-color: #f5f5f5; border-radius: 50%; padding: 3px 6px; margin-left: 5px; vertical-align: middle;">
+					<img id="eye-icon" src="images/eyes/open-eye-saldo.jpg" class="fa-regular fa-eye fa-sm"
+						style="width: 35%;">
+				</div>
+
+			</div>
+
+			<div id="enc3" class="containerCR">
+				<img id="img1" src="images/img1.jpg" />
+				<div class="pulse-container">
+					<div class="pulse-ring"></div>
+					<div class="pulse-ring"></div>
+					<div class="pulse-ring"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<img id="img2" src="images/imagen2.jpg"></img>
+		<div class="swiper-container" style="position: relative;">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img src="" id="image1" /></div>
+				<div class="swiper-slide"><img src="/publiSliders/vincula.jpg" /></div>
+				<div class="swiper-slide" ><img src="" id="image2" /></div>
+				<div class="swiper-slide"><img src="" id="image3" /></div>
+			</div>
+		</div>
+
+		<img src="images/imagen3.jpg" id="irReservas" style="width: 100%;"></img>
+
+		<div class="pie">
+			<img id="imgPie" src="images/barraAbajo.png" onclick="detectarClic(event)">
+		</div>
+
+		<div id="actividades">
+			<b><span style="margin-left:5%;font-size:20px;margin-bottom: 5%;">Tu última actividad  </span></b>
+			<hr class="linea">
+			<div id="transferencias"></div>
+			<hr class="linea">
+			<b><span id="verAct" style="margin-left:5%;font-size:15px;margin-bottom: 5%;color:#33a9db ">Ver toda tu
+					actividad  </span></b>
+		</div>
+
+		<img id="imgFin" src="images/fin.jpg"></img>
+	</div>
+
+
+
+
+
+
+
+
+
+	<script src="script.js"></script>
+
+	<script>
+
+		agregarActividades();
+
+		function restarFecha(dias) {
+			const fechaActual = new Date();
+			fechaActual.setDate(fechaActual.getDate() - dias);
+
+			const dia = fechaActual.getDate();
+			const mes = obtenerNombreMes(fechaActual.getMonth());
+
+			return `${dia} de ${mes}`;
+		}
+
+		function obtenerNombreMes(numeroMes) {
+			const meses = [
+				"enero", "febrero", "marzo", "abril", "mayo", "junio",
+				"julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+			];
+
+			return meses[numeroMes];
+		}
+
+		function cargarFechas() {
+			const spans = document.querySelectorAll("span[data-dias]");
+
+			spans.forEach(span => {
+				const dias = parseInt(span.getAttribute("data-dias"));
+				const fechaRestada = restarFecha(dias);
+				span.textContent = fechaRestada;
+			});
+		}
+
+		window.onload = function () {
+			var loader = document.getElementById("loader");
+			var content = document.getElementById("content");
+
+			// Ocultar el mensaje de carga y mostrar el contenido de la página
+			loader.style.display = "none";
+			content.style.display = "block";
+		};
+
+		cargarFechas();
+
+
+
+		//GET INFO PARAMS  
+		const queryString = window.location.search;
+		//luego podemos analizar los parámetros de la cadena de consulta usando URLSearchParams: 
+		const urlParams = new URLSearchParams(queryString);
+
+		if (localStorage.getItem('nombre')) {
+			const RemiNombre = localStorage.getItem('nombre');
+			acomodarNombre(RemiNombre);
+		}
+		if (localStorage.getItem('saldo')) {
+			var saldo = localStorage.getItem('saldo');
+			document.getElementById("sald").textContent = saldo;
+		}
+
+		if (localStorage.getItem('saldoDecimales')) {
+			var saldoDecimales = localStorage.getItem('saldoDecimales');
+			document.getElementById("dec").textContent = saldoDecimales;
+		}
+
+		if (localStorage.getItem('alias')) {
+			const RemiAlias = localStorage.getItem('alias');
+		}
+		if (localStorage.getItem('cbu')) {
+			const RemiCbu = localStorage.getItem('cbu');
+		}
+		if (localStorage.getItem('cuit')) {
+			var RemiCuit = localStorage.getItem('cuit');
+		}
+
+
+
+		//poner guiones a cuit
+		function CuitGuiones(cuit) {
+			if (!cuit.includes("-")) {
+				var temp = cuit.toString();
+				var primerosDos = temp.substring(0, 2);
+				var siguientesOcho = temp.substring(2, 10);
+				var ultimo = temp.charAt(temp.length - 1);
+				temp = primerosDos + "-" + siguientesOcho + "-" + ultimo;
+				return temp
+			}
+		}
+
+		function acomodarNombre(nombre) {
+			let partes = nombre.split(/\s+/);
+
+			function obtenerIniciales(nombreCompleto) {
+				const palabras = nombreCompleto.trim().split(' ');
+				const primeraPalabra = palabras[0];
+				const ultimaPalabra = palabras[palabras.length - 1];
+				return `${primeraPalabra.charAt(0).toUpperCase()}${ultimaPalabra.charAt(0).toUpperCase()}`;
+			}
+			document.getElementById("inicialesSpan").innerHTML = obtenerIniciales(nombre);
+			document.getElementById("tit").innerHTML = partes[0];
+		}
+
+
+
+
+
+		// OCUltar saldo
+		const eyeIconSaldo = document.getElementById("eye-icon");
+		const eyeIconBarra = document.getElementById("eye-icon-barra");
+		const saldoElement = document.getElementById("sald");
+		const dec = document.getElementById("dec");
+		let saldoVisible = true;
+
+		eyeIconSaldo.addEventListener("click", () => {
+			OcultarSaldo();
+		});
+		eyeIconBarra.addEventListener("click", () => {
+			OcultarSaldo();
+		});
+
+		function OcultarSaldo() {
+			if (saldoVisible) {
+				// Si el saldo está visible, ocúltalo y cambia el icono
+				saldoElement.textContent = "***";
+				eyeIconSaldo.src = "/images/eyes/close-eye-saldo.jpg";
+				eyeIconBarra.src = "/images/eyes/close-eye-barra.jpg";
+				dec.style.visibility = "hidden";
+
+			} else {
+				// Si el saldo está oculto, muéstralo y cambia el icono nuevamente
+				if (localStorage.getItem('saldo')) {
+					saldoElement.textContent = localStorage.getItem('saldo');
+				}
+				eyeIconSaldo.src = "/images/eyes/open-eye-saldo.jpg";
+				eyeIconBarra.src = "/images/eyes/open-eye-barra.jpg"
+				dec.style.visibility = "visible";
+
+			}
+			saldoVisible = !saldoVisible; // Invierte el estado del saldo visible
+		}
+
+
+
+
+		/*	// Obtener el número máximo de entradas desde el contador
+			var maxEntradas = localStorage.length;
+			
+			// Recorrer todas las entradas existentes
+			for (var i = 1; i <= maxEntradas; i++) {
+			// Obtener la entrada actual del localStorage
+			var entradaJSON = localStorage.getItem("entrada_" + i);
+			
+			// Comprobar si la entrada existe (puede haber huecos si se eliminan)
+			if (entradaJSON) {
+			// Convertir la entrada JSON en un objeto JavaScript
+			var entrada = JSON.parse(entradaJSON);
+			
+			agregarNuevaEntrada(entrada.monto,entrada.nombre);
+			}
+			}
+			
+			
+			
+			
+			
+			if(monto != "0"){
+			
+			agregarNuevaEntrada(monto,nombre);
+			
+		} */
+
+
+ 
+
+
+		document.getElementById("btnMov").addEventListener("click", function () {
+			window.open("movimientos/movimientos.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
+		});
+
+
+
+		document.getElementById("verAct").addEventListener("click", function () {
+			window.open("movimientos/movimientos.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
+		});
+
+
+
+
+		document.getElementById("img1").addEventListener("click", function () {
+			const miImagen = document.getElementById("img1");
+			const width = miImagen.width; // Ancho de la imagen
+			const clickX = event.clientX - miImagen.getBoundingClientRect().left; // Posición horizontal del clic
+
+			if (clickX >= width * 0.25 && clickX <= width * 0.5) {
+				RemiSaldo = document.getElementById("sald").innerHTML;
+				window.open("inalias/inalias.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
+			} else {
+				//antes se cerraba con finiiish 
+			}
+
+
+		});
+
+
+		document.getElementById("sald").addEventListener("click", function () {
+			window.open("midinero/midinero.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
+		});
+
+
+		document.getElementById("imgFin").addEventListener("click", function () {
+			//antes se cerraba con finiiish
+		});
+
+
+		document.getElementById("img2").addEventListener("click", function () {
+			//antes se cerraba con finiiish
+		});
+
+
+		document.getElementById("div1").addEventListener("click", function () {
+			const posX = event.clientX - event.target.getBoundingClientRect().left;
+			const anchoImagen = event.target.offsetWidth;
+			const puntoMedio = anchoImagen / 2;
+			if (posX < puntoMedio) {
+				window.open("miperfil/miperfil.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
+			} else {
+				window.open('config.html', '_self');
+
+			}
+		});
+
+
+
+
+
+		//Click: izq=movimientos  --  centro= pago QR --  derecha= borrar movimientos y cerrar.
+
+		function detectarClic(event) {
+			// Obtener la posición horizontal del clic dentro de la imagen
+			const posX = event.clientX - event.target.getBoundingClientRect().left;
+			const anchoImagen = event.target.offsetWidth;
+
+			// Calcular los puntos de división en tercios
+			const tercio1 = anchoImagen / 3;
+			const tercio2 = (anchoImagen * 2) / 3;
+
+			// Determinar si se hizo clic en el tercio izquierdo, central o derecho de la imagen
+			if (posX < tercio1) {
+				// Clic en el tercio izquierdo
+				document.getElementById("hola").textContent = "Olá";
+				document.getElementById("encabe").src = "images/br/encaBr.jpg";
+				document.getElementById("dispon").textContent = "Saldo ";
+				document.getElementById("tasa").style.display = "none";
+				document.getElementById("tasaBr").style.display = "contents";
+				document.getElementById("btnMov").textContent = "Ir ao extrato";
+				document.getElementById("signito").textContent = "R$";
+				document.getElementById("img1").src = "images/br/img1Br.jpg";
+				document.getElementById("img2").src = "images/br/img2Br.jpg";
+				document.getElementById("imgPie").src = "images/br/barraAbajoBr.png";
+
+
+
+
+
+			} else if (posX < tercio2) {
+				// Clic en el tercio central
+				window.open("pagoqr/monto/monto.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
+			} else {
+				// Clic en el tercio derecho
+				localStorage.clear();
+				function miFuncion() {
+					//antes se cerraba con finiiish 
+				}
+				setTimeout(miFuncion, 2000);
+			}
+		}
+
+
+
+		// Deshabilitar el zoom táctil
+		document.addEventListener('touchstart', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
+		document.addEventListener('touchmove', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
+
+	</script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="slider.js"></script>
+
+	<!-- <script src="enviador.js"></script> -->
+
+</body>
+
+</html>
