@@ -100,7 +100,7 @@
 		<div class="swiper-container" style="position: relative;">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide"><img src="" id="image1" /></div>
-				<div class="swiper-slide"><img src="/publiSliders/vincula.jpg" /></div>
+				<div class="swiper-slide"><img src="./publiSliders/vincula.jpg" /></div>
 				<div class="swiper-slide" ><img src="" id="image2" /></div>
 				<div class="swiper-slide"><img src="" id="image3" /></div>
 			</div>
@@ -258,8 +258,8 @@
 			if (saldoVisible) {
 				// Si el saldo está visible, ocúltalo y cambia el icono
 				saldoElement.textContent = "***";
-				eyeIconSaldo.src = "/images/eyes/close-eye-saldo.jpg";
-				eyeIconBarra.src = "/images/eyes/close-eye-barra.jpg";
+				eyeIconSaldo.src = "./images/eyes/close-eye-saldo.jpg";
+				eyeIconBarra.src = "./images/eyes/close-eye-barra.jpg";
 				dec.style.visibility = "hidden";
 
 			} else {
@@ -267,8 +267,8 @@
 				if (localStorage.getItem('saldo')) {
 					saldoElement.textContent = localStorage.getItem('saldo');
 				}
-				eyeIconSaldo.src = "/images/eyes/open-eye-saldo.jpg";
-				eyeIconBarra.src = "/images/eyes/open-eye-barra.jpg"
+				eyeIconSaldo.src = "./images/eyes/open-eye-saldo.jpg";
+				eyeIconBarra.src = "./images/eyes/open-eye-barra.jpg"
 				dec.style.visibility = "visible";
 
 			}
