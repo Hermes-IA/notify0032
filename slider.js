@@ -3,14 +3,14 @@ const totalSliders = 5;
 
 // Mapeo de imágenes a URLs
 const imageUrlMap = {
-    'principal1.jpg': 'https://ejemplo.com/url-para-principal1',
-    'principal2.jpg': 'https://ejemplo.com/url-para-principal2',
-    'principal3.jpg': 'https://ejemplo.com/url-para-principal3',
-    'principal4.jpg': 'https://ejemplo.com/url-para-principal4',
-    'principal5.jpg': 'https://ejemplo.com/url-para-principal5',
-    'principal6.jpg': 'https://ejemplo.com/url-para-principal6',
-    'principal7.jpg': 'https://ejemplo.com/url-para-principal7',
-    'principal8.jpg': 'https://ejemplo.com/url-para-principal8',
+    'principal1.jpg': 'https://serviclub.com.ar',
+    'principal2.jpg': 'https://www.burgerking.com.ar',
+    'principal3.jpg': 'https://www.nissan.com.ar',
+    'principal4.jpg': 'https://jwct.energizerpromo.com/es-AR?&s=energizerpromo.com',
+    'principal5.jpg': 'https://www.cachosuspension.com',
+    'principal6.jpg': 'https://www.nissan.com.ar',
+    'principal7.jpg': 'https://tienda.moulinex.com.ar',
+    'principal8.jpg': 'https://www.lagotita.com.ar',
     'slider1.jpg': 'https://ejemplo.com/url-para-slider1',
     'slider2.jpg': 'https://ejemplo.com/url-para-slider2',
     'slider3.jpg': 'https://ejemplo.com/url-para-slider3',

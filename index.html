@@ -96,7 +96,110 @@
 		</div>
 
 
-		<img id="img2" src="images/imagen2.jpg"></img>
+		<img id="img2" src="images/imagen2.jpg">
+
+		<div class="overlay"></div>
+		<div class="mostrarMas">
+			<div class="top-bar">
+				<div class="drag-indicator"></div>
+			</div>
+			<div class="modal-content">
+				<img id="contMostrarMas" style="width: 100%;" src="images/MostrarMas/MostrarMas1.jpg">
+			</div>
+		</div>
+
+		<script>
+			document.getElementById('img2').addEventListener('click', function (event) {
+				const img = event.target;
+				const imgWidth = img.offsetWidth;
+				const imgHeight = img.offsetHeight;
+				const regionWidth = imgWidth / 4;
+				const regionHeight = imgHeight / 2;
+				const clickX = event.offsetX;
+				const clickY = event.offsetY;
+
+				// Verificar si el clic fue en la región de Fila 2, Columna 4
+				if (clickX >= 3 * regionWidth && clickY >= regionHeight) {
+					openModal();
+				}
+			});
+
+			const modal = document.querySelector('.mostrarMas');
+			const overlay = document.querySelector('.overlay');
+			let startY = 0;
+			let currentY = 0;
+			let isDragging = false;
+			let isScrollingContent = false;
+
+			function openModal() {
+				modal.classList.add('active');
+				overlay.classList.add('active');
+			}
+
+			modal.addEventListener('touchstart', (e) => {
+				startY = e.touches[0].clientY;
+				isDragging = true;
+				isScrollingContent = modal.scrollTop > 0;
+			});
+
+			modal.addEventListener('touchmove', (e) => {
+				if (!isDragging) return;
+
+				currentY = e.touches[0].clientY;
+				const deltaY = currentY - startY;
+
+				if (modal.scrollTop === 0 && deltaY > 0) {
+					e.preventDefault();
+					modal.style.transform = `translateX(-50%) translateY(${deltaY}px)`;
+				}
+			});
+
+			modal.addEventListener('touchend', (e) => {
+				if (!isDragging) return;
+
+				const deltaY = currentY - startY;
+
+				if (deltaY > 100 && modal.scrollTop === 0) {
+					closeModal();
+				} else {
+					modal.style.transform = 'translateX(-50%)';
+				}
+
+				isDragging = false;
+			});
+
+			function closeModal() {
+				modal.classList.remove('active');
+				overlay.classList.remove('active');
+				modal.style.transform = 'translateX(-50%)';
+			}
+
+			overlay.addEventListener('click', closeModal);
+			
+			const imagen = document.getElementById('contMostrarMas');
+
+			// Agregar un manejador de eventos para el clic
+			imagen.addEventListener('click', function () { 
+				if (imagen.src.includes('MostrarMas1.jpg')) {
+					imagen.src = 'images/MostrarMas/MostrarMas2.jpg';
+				} else {
+					imagen.src = 'images/MostrarMas/MostrarMas1.jpg';
+				}
+			});
+
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
 		<div class="swiper-container" style="position: relative;">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide"><img src="" id="image1" /></div>
@@ -114,11 +217,77 @@
 
 		<div id="actividades">
 			<b><span style="margin-left:5%;font-size:20px;margin-bottom: 5%;">Tu última actividad  </span></b>
-			<hr class="linea">
-			<div id="transferencias"></div>
-			<hr class="linea">
-			<b><span id="verAct" style="margin-left:5%;font-size:15px;margin-bottom: 5%;color:#33a9db ">Ver toda tu
-					actividad  </span></b>
+			<b><span id="verAct"
+					style="margin-left:5%;font-size:15px;margin-bottom: 5%;color:#33a9db;float: right;margin-right: 3%;">Ver
+					todo <i class="fa-solid fa-chevron-right fa-xs" style="color: #33a9db;"></i></span></b>
+
+
+
+			<div id="transferencias">
+				<div class="product" style="display: flex; justify-content: space-between; margin-bottom: 3%;">
+					<div id="izq">
+						<img id="icoIMG"
+							src="data:image/jpeg;base64,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"></img>
+						<div id="izqText">
+							<span style="display: block ruby; font-weight: bold;">Dexter          </span>
+							<span style="font-size:13px; color:gray">Pago en tienda física</span>
+							<img src="images/registros/disponible.png" style="width: 80%;">
+						</div>
+					</div>
+
+					<div id="der">
+
+						<div id="izqText">
+							<span style="color: rgb(24, 24, 24);">-$124.500,00</span>
+							<span style="font-size:13px; color:gray;text-align: right;">Ayer</span>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="product" style="display: flex; justify-content: space-between;margin-bottom: 3%;">
+
+					<div id="izq">
+						<img id="icoIMG" src="images/registros/compra.jpg"></img>
+						<div id="izqText">
+							<span style="display: block ruby;font-weight: bold;">Asociación civil Rocca</span>
+							<span style="font-size:13px; color:gray">Pago</span>
+							<img src="images/registros/disponible.png" style="width: 80%;">
+						</div>
+					</div>
+
+					<div id="der">
+
+						<div id="izqText">
+							<span style="color: rgb(24, 24, 24);">-$9.500,00</span>
+							<span style="font-size:13px; color:gray;text-align: right;">Ayer</span>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="product" style="display: flex; justify-content: space-between;margin-bottom: 3%;">
+
+					<div id="izq">
+						<img id="icoIMG" src="images/registros/entrada-salida.jpg"></img>
+						<div id="izqText">
+							<span style="display: block ruby;font-weight: bold;">Lucas David Cuneo</span>
+							<span style="font-size:13px; color:gray">Transferencia recibida</span>
+							<img src="images/registros/disponible.png" style="width: 80%;">
+						</div>
+					</div>
+
+					<div id="der">
+
+						<div id="izqText">
+							<span style="color:green">+$12.700,00</span>
+							<span style="font-size:13px; color:gray;text-align: right;">Miércoles</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 
 		<img id="imgFin" src="images/fin.jpg"></img>
@@ -136,7 +305,6 @@
 
 	<script>
 
-		agregarActividades();
 
 		function restarFecha(dias) {
 			const fechaActual = new Date();
@@ -361,7 +529,7 @@
 				window.open("miperfil/miperfil.html?RemiNombre=" + RemiNombre + "&RemiCuit=" + RemiCuit + "&RemiCbu=" + RemiCbu + "&RemiSaldo=" + RemiSaldo + "&RemiMotivo=" + RemiMotivo + "&DestiNombre1=" + DestiNombre1 + "&DestiNombre2=" + DestiNombre2 + "&DestiAlias=" + DestiAlias + "&DestiCbuDest=" + DestiCbuDest + "&DestiCuit=" + DestiCuit + "&DestiCuenta=" + DestiCuenta + "&DestiTipo=" + DestiTipo + "&DestiImagen=" + DestiImagen + "&monto=0" + "&hora=" + hora + "&TresCod=" + TresCod, '_self');
 			}
 
-			if (posX > anchoImagen * (3 / 4)) {
+			if (posX > anchoImagen * (6 / 7)) {
 				window.open('config.html', '_self');
 			}
 		});
