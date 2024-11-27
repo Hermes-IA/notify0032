@@ -1,15 +1,15 @@
  
 const imageUrlMapPeli = { 
-    'peli1.jpg': 'https://ejemplo.com/url-para-slider1',
-    'peli2.jpg': 'https://ejemplo.com/url-para-slider2',
-    'peli3.jpg': 'https://ejemplo.com/url-para-slider3',
-    'peli4.jpg': 'https://ejemplo.com/url-para-slider4',
-    'peli5.jpg': 'https://ejemplo.com/url-para-slider5',
-    'peli6.jpg': 'https://ejemplo.com/url-para-slider1',
-    'peli7.jpg': 'https://ejemplo.com/url-para-slider2',
-    'peli8.jpg': 'https://ejemplo.com/url-para-slider3',
-    'peli9.jpg': 'https://ejemplo.com/url-para-slider4',
-    'peli10.jpg': 'https://ejemplo.com/url-para-slider5'
+    'peli1.jpg': 'https://play.mercadolibre.com.ar/ver/yellowstone/5a79930369df4d3faf2c10e08d125b77',
+    'peli2.jpg': 'https://play.mercadolibre.com.ar/ver/zombieland-tiro-de-gracia/c0f978b28c1d4b2da645fc6077ffd64a',
+    'peli3.jpg': 'https://play.mercadolibre.com.ar/ver/resident-evil-4-la-resurreccion/4da9087ad0c7406086da3f0ea86c1b9c',
+    'peli4.jpg': 'https://play.mercadolibre.com.ar/ver/2067/976c94a925194944b845ed38f93ea523',
+    'peli5.jpg': 'https://play.mercadolibre.com.ar/ver/petroleo-sangriento/a9e44df3b8954582baf62b436337432f',
+    'peli6.jpg': 'https://play.mercadolibre.com.ar/ver/los-intocables/d06317384efa43de91d57dce8266424c',
+    'peli7.jpg': 'https://play.mercadolibre.com.ar/ver/una-mente-brillante/eb34a7bafbd14c0b96859b7068cb7340',
+    'peli8.jpg': 'https://play.mercadolibre.com.ar/ver/actividad-paranormal-2/7ee47424f8e94771ac9c09ee03a6f4c6',
+    'peli9.jpg': 'https://play.mercadolibre.com.ar/ver/cloud-atlas/93c6f120fb1a47c898383680727d3420',
+    'peli10.jpg': 'https://play.mercadolibre.com.ar/ver/un-dia-para-sobrevivir/653bd0e841cc4a95957d8d349af47db6'
 };
 
 document.addEventListener('DOMContentLoaded', function() {
