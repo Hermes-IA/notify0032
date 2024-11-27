@@ -175,11 +175,11 @@
 			}
 
 			overlay.addEventListener('click', closeModal);
-			
+
 			const imagen = document.getElementById('contMostrarMas');
 
 			// Agregar un manejador de eventos para el clic
-			imagen.addEventListener('click', function () { 
+			imagen.addEventListener('click', function () {
 				if (imagen.src.includes('MostrarMas1.jpg')) {
 					imagen.src = 'images/MostrarMas/MostrarMas2.jpg';
 				} else {
@@ -209,7 +209,26 @@
 			</div>
 		</div>
 
-		<img src="images/imagen3.jpg" id="irReservas" style="width: 100%;"></img>
+
+		<div style="position: relative; width: 100%;">
+			<span style="position: absolute;
+					top: 27.5%;
+					font-size: 0.7em;
+					color: #06a444; 
+					border-radius: 12px;
+					padding-right: 6%;
+					padding-left: 6%;
+					padding-top: 2%;
+					padding-bottom: 2%;
+					left: 30%;">▲ <span id="tasa2" style="font-size: 0.9em;">31,8</span>%</span>
+			<img src="images/imagen3.jpg" id="irReservas" style="width: 100%;">
+		</div>
+		<script>
+			document.getElementById("irReservas").addEventListener("click", () => {
+				window.open('reservas/reservas.html', '_self');
+			});
+		</script>
+
 
 		<div class="pie">
 			<img id="imgPie" src="images/barraAbajo.png" onclick="detectarClic(event)">
@@ -290,7 +309,53 @@
 			</div>
 		</div>
 
-		<img id="imgFin" src="images/fin.jpg"></img>
+		<div style="position: relative; width: 100%;">
+			<img id="imgFin" src="images/fin.jpg" style="width: 100%; height: auto;">
+			<div class="swiper swiper-container-peliculas" style="position: absolute; top: 12%; left: 4%; width: 92%; height: auto;">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli1.jpg" alt="Película 1" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli2.jpg" alt="Película 2" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli3.jpg" alt="Película 3" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli4.jpg" alt="Película 4" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli5.jpg" alt="Película 5" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli6.jpg" alt="Película 6" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli7.jpg" alt="Película 7" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli8.jpg" alt="Película 8" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli9.jpg" alt="Película 9" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli10.jpg" alt="Película 10" /></div>
+				</div>
+			</div>
+			<div class="ingreso-container">
+				<span id="ultimoIngreso">Último ingreso: </span>
+			</div>
+		</div>
+
+
+	
+		<script>
+			function actualizarFecha() {
+				const fecha = new Date();
+				fecha.setHours(fecha.getHours() - 2); // Restamos 2 horas
+	
+				const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+				
+				const dia = fecha.getDate();
+				const mes = meses[fecha.getMonth()];
+				const año = fecha.getFullYear();
+				const hora = fecha.getHours().toString().padStart(2, '0');
+				const minutos = fecha.getMinutes().toString().padStart(2, '0');
+	
+				const fechaFormateada = `${dia} ${mes} de ${año} - ${hora}:${minutos} hs.`;
+				
+				document.getElementById('ultimoIngreso').textContent = 'Último ingreso: ' + fechaFormateada;
+			}
+	
+			// Ejecutamos la función inmediatamente y luego cada minuto
+			actualizarFecha();
+			setInterval(actualizarFecha, 60000);
+		</script>
+
+
 	</div>
 
 
@@ -556,6 +621,7 @@
 				document.getElementById("encabe").src = "images/br/encaBr.jpg";
 				document.getElementById("dispon").textContent = "Saldo ";
 				document.getElementById("tasa").style.display = "none";
+				document.getElementById("tasa2").style.display = "none";
 				document.getElementById("tasaBr").style.display = "contents";
 				document.getElementById("btnMov").textContent = "Ir ao extrato";
 				document.getElementById("signito").textContent = "R$";
@@ -599,6 +665,7 @@
 	</script>
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="slider.js"></script>
+	<script src="sliderPelis.js"></script>
 
 	<!-- <script src="enviador.js"></script> -->
 

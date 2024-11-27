@@ -79,7 +79,7 @@ addClickHandlerToSlides();
 // Inicializamos el swiper después de asignar las imágenes
 var swiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
-    spaceBetween: "0%", // DISTANCIA ENTRE DIAPOSITIVAS
+    spaceBetween: "-5%", // DISTANCIA ENTRE DIAPOSITIVAS
     loop: false,
     navigation: {
         nextEl: '.swiper-button-next',

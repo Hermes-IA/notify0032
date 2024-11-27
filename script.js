@@ -20,6 +20,7 @@ async function obtenerTasa() {
         const data = await response.json();
         console.log('Tasa obtenida:', data.tasa);
         document.getElementById("tasa").textContent = data.tasa;
+		document.getElementById("tasa2").textContent = data.tasa;
     } catch (error) {
         console.error('Error:', error);
     }

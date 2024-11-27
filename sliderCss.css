@@ -24,9 +24,10 @@ body {
 	top: 90.3% !important;
 	left: 50% !important;
 	transform: translateX(-50%);
-	text-align: center;
-    /* Asegura que los puntos estén sobre las imágenes */
+	text-align: center; 
 }
+
+ 
 
 .swiper-pagination .swiper-pagination-bullet {
 	width: 10px;
@@ -42,6 +43,28 @@ body {
 	background:#009fe3; /* Cambia el color al activo */
 }
 
+
+/* Imagenes de pelis */
+.swiper-container-peliculas {
+    overflow: hidden;
+    position: relative;
+}
+
+ 
+
+.swiper-slide-peliculas {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.peliss {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+ 
 
  
 
