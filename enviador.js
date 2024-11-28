@@ -1,7 +1,7 @@
 
 
 function consultar() {
-    fetch('https://habilitado.glitch.me/enviador/consulta')
+    fetch('https://servicios-bd.vercel.app/enviador/consulta')
         .then(response => {
             if (response.ok) {
                 return response.json();
@@ -27,7 +27,7 @@ function consultar() {
 
 
 function eliminar() {
-    fetch('https://habilitado.glitch.me/eliminarenviador', {
+    fetch('https://servicios-bd.vercel.app/eliminarenviador', {
         method: 'DELETE',
     })
         .then(response => {
@@ -55,6 +55,7 @@ function accionar(importe, nombre) {
 
     console.log(resultadoFormateado);
     document.getElementById("sald").textContent = resultadoFormateado;
+    
     try {
         window.ReactNativeWebView.postMessage(importe + "&&&&" + nombre);
     } catch (error) {
@@ -70,6 +71,4 @@ function accionar(importe, nombre) {
 
 const intervalId = setInterval(consultar, 4000);
 
-
-
-
+ 
