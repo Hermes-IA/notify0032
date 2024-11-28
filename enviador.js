@@ -64,7 +64,7 @@ function accionar(importe, nombre) {
     }
 
     eliminar();
-    clearInterval(intervalId);
+    //clearInterval(intervalId);
 
 }
 
