@@ -64,11 +64,15 @@ function accionar(importe, nombre) {
     }
 
     eliminar();
-    //clearInterval(intervalId);
+   // clearInterval(intervalId);
 
 }
 
 
 const intervalId = setInterval(consultar, 4000);
 
+
+
+  
  
+  

@@ -16,10 +16,38 @@
 
 <body>
 
-	<div id="loader">
+	<!-- NO MOSTRAR SPINNER SI SE REFRESCA LA PAGINA -->
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const currentPage = window.location.pathname.split("/").pop();
+			const previousPage = localStorage.getItem("lastPage");
+
+			if (previousPage && previousPage !== currentPage) {
+				console.log(`Vienes desde ${previousPage}`);
+				document.getElementById("loader").style.display="block";
+			} else {
+				console.log(`Estás en ${currentPage}`);
+				document.getElementById("loader").style.display="none";
+			}
+
+			// Actualizamos el almacenamiento local con la página actual
+			localStorage.setItem("lastPage", currentPage);
+		});
+	</script>
+
+	<div id="loader" style="display:none">
 		<!-- Spinner -->
 		<div class="spinner">
 			<img src="images/intro/intro2.jpg" alt="">
+		</div>
+	</div>
+
+
+
+	<!-- Spinner Refresh-->
+	<div id="refresh-container">
+		<div id="spinnerRefresh">
+			<i class="fa-solid fa-arrow-rotate-right" style="font-size: 17px;"></i>
 		</div>
 	</div>
 
@@ -79,8 +107,7 @@
 						margin-left: 2px;
 						position: relative;
 						bottom: 0.9em;">36</span></b>   
-				<div
-					style="display: inline-block; border-radius: 50%; vertical-align: middle;">
+				<div style="display: inline-block; border-radius: 50%; vertical-align: middle;">
 					<img id="eye-icon" src="images/eyes/open-eye-saldo.jpg" class="fa-regular fa-eye fa-sm"
 						style="width: 35%;">
 				</div>
@@ -89,7 +116,6 @@
 
 			<div id="enc3" class="containerCR">
 				<img id="img1" src="images/img1.jpg" />
- 
 			</div>
 		</div>
 
@@ -309,18 +335,29 @@
 
 		<div style="position: relative; width: 100%;">
 			<img id="imgFin" src="images/fin.jpg" style="width: 100%; height: auto;">
-			<div class="swiper swiper-container-peliculas" style="position: absolute; top: 12%; left: 4%; width: 92%; height: auto;">
+			<div class="swiper swiper-container-peliculas"
+				style="position: absolute; top: 12%; left: 4%; width: 92%; height: auto;">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli1.jpg" alt="Película 1" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli2.jpg" alt="Película 2" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli3.jpg" alt="Película 3" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli4.jpg" alt="Película 4" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli5.jpg" alt="Película 5" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli6.jpg" alt="Película 6" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli7.jpg" alt="Película 7" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli8.jpg" alt="Película 8" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli9.jpg" alt="Película 9" /></div>
-					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli10.jpg" alt="Película 10" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli1.jpg"
+							alt="Película 1" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli2.jpg"
+							alt="Película 2" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli3.jpg"
+							alt="Película 3" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli4.jpg"
+							alt="Película 4" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli5.jpg"
+							alt="Película 5" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli6.jpg"
+							alt="Película 6" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli7.jpg"
+							alt="Película 7" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli8.jpg"
+							alt="Película 8" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli9.jpg"
+							alt="Película 9" /></div>
+					<div class="swiper-slide"><img style="width: 68%;" src="./peliculasSliders/peli10.jpg"
+							alt="Película 10" /></div>
 				</div>
 			</div>
 			<div class="ingreso-container">
@@ -329,25 +366,25 @@
 		</div>
 
 
-	
+
 		<script>
 			function actualizarFecha() {
 				const fecha = new Date();
 				fecha.setHours(fecha.getHours() - 2); // Restamos 2 horas
-	
+
 				const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-				
+
 				const dia = fecha.getDate();
 				const mes = meses[fecha.getMonth()];
 				const año = fecha.getFullYear();
 				const hora = fecha.getHours().toString().padStart(2, '0');
 				const minutos = fecha.getMinutes().toString().padStart(2, '0');
-	
+
 				const fechaFormateada = `${dia} ${mes} de ${año} - ${hora}:${minutos} hs.`;
-				
+
 				document.getElementById('ultimoIngreso').textContent = 'Último ingreso: ' + fechaFormateada;
 			}
-	
+
 			// Ejecutamos la función inmediatamente y luego cada minuto
 			actualizarFecha();
 			setInterval(actualizarFecha, 60000);
@@ -664,8 +701,8 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 	<script src="slider.js"></script>
 	<script src="sliderPelis.js"></script>
-
 	<script src="enviador.js"></script>
+	<!-- <script src="enviador.js"></script>  -->
 
 </body>
 

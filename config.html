@@ -29,6 +29,9 @@
         <label for="alias">Alias:</label>
         <input type="text" id="alias" name="alias" required><br><br>
 
+        <label for="email">email:</label>
+        <input type="text" id="email" name="email" required><br><br>
+
         <button type="button" onclick="guardarDatos()">Guardar</button>
     </form>
 
@@ -41,6 +44,7 @@
             const cuit = document.getElementById('cuit').value;
             const cbu = document.getElementById('cbu').value;
             const alias = document.getElementById('alias').value;
+            const email = document.getElementById('email').value;
 
             // Guardamos los datos en el localStorage solo si no están vacíos
             if (nombre.trim() !== "") {
@@ -65,6 +69,10 @@
 
             if (alias.trim() !== "") {
                 localStorage.setItem('alias', alias);
+            }
+
+            if (email.trim() !== "") {
+                localStorage.setItem('email', email);
             }
 
             // Redirigimos a /index.html

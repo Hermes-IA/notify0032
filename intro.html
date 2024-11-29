@@ -53,7 +53,7 @@
             bottom: 32px;
             left: 50%;
             transform: translateX(-50%);
-            width: 95%; 
+            width: 95%;
             text-align: center;
             opacity: 0;
             transition: opacity 0.5s;
@@ -105,15 +105,34 @@
             fill: white;
             transition: fill 0.3s;
         }
+
+        .email-footer {
+            position: absolute;
+            bottom: 4%;
+            /* Espacio desde la parte inferior */
+            left: 50%;
+            transform: translateX(-50%);
+            /* Centrar horizontalmente */
+            text-align: center;
+            color: black;
+            font-size: 0.9em;
+            font-family: 'Proxima Nova', sans-serif;
+        }
     </style>
 </head>
 
 <body>
     <img src="images/intro/intro1.jpg" alt="Intro 1" class="fullscreen-img" id="img1">
     <img src="images/intro/intro2.jpg" alt="Intro 2" class="fullscreen-img" id="img2" style="opacity: 0;">
-    <div class="overlay" id="overlay"></div>
 
-    <div class="unlock-container" id="unlockContainer">
+    <div class="email-footer">
+        <span id="emailFooter" style="display: none;">jrami33.sixo@gmail.com</span>
+    </div>
+
+
+    <div class="overlay" id="overlay" ></div>
+
+    <div class="unlock-container" id="unlockContainer" >
         <div class="unlock-text">
             <div class="primary-text">Usá tu método de desbloqueo</div>
             <div class="secondary-text">Escanee su huella digital.</div>
@@ -140,6 +159,10 @@
             setTimeout(() => {
                 img2.style.opacity = '1';
                 img1.style.opacity = '0';
+                if (localStorage.getItem('email')) {
+                    document.getElementById("emailFooter").style.display="block";
+                    document.getElementById("emailFooter").textContent = localStorage.getItem('email');
+                }
             }, 1000);
 
             setTimeout(() => {
@@ -160,7 +183,7 @@
                 fingerprint.querySelector('path').setAttribute('fill', '#141414');
 
                 pressTimer = setTimeout(() => {
-                    window.location.href = 'index.html'; 
+                    window.location.href = 'index.html';
                 }, 500);
             }
 
@@ -169,6 +192,23 @@
                 fingerprint.style.backgroundColor = '#141414';
                 fingerprint.querySelector('path').setAttribute('fill', 'white');
             }
+
+
+
+
+
+
+            const currentPage = window.location.pathname.split("/").pop(); // Nombre del archivo actual
+            const previousPage = localStorage.getItem("lastPage"); // Página almacenada previamente
+
+            if (previousPage && previousPage !== currentPage) {
+                console.log(`Vienes desde ${previousPage}`);
+            } else {
+                console.log(`Estás en ${currentPage}`);
+            }
+
+            // Actualizamos el almacenamiento local con la página actual
+            localStorage.setItem("lastPage", currentPage);
         });
     </script>
 </body>
