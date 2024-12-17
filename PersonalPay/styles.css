@@ -1,0 +1,470 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('ProximaNovaRegular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Estilos del spinner */
+.spinner img {
+	width: 100%;
+	position: relative;
+	top: -20px;
+}
+
+
+
+
+
+body {
+	min-height: 100vh;
+	display: block;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Proxima Nova', sans-serif;
+	margin: 0; 
+	background: linear-gradient(to top, #f1f1f1 57%, #f1f1f1 89%, #433ad4 96%);
+	margin: 0;
+	min-height: 100vh;
+
+
+}
+
+
+
+#content {
+	align-items: center;
+	overflow-x: hidden;
+	/* Ocultar desbordamiento horizontal */
+	overflow-y: auto;
+
+}
+
+
+#div1 {
+	position: relative;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 9999;
+	background: linear-gradient(to top, #36addf 0%, #009fe3 100%);
+}
+
+#div1 img {
+	width: 100%;
+}
+
+#div1 span {
+	font-size: 16px;
+	color: white;
+}
+
+/* ANIMACION BARRA SUPERIOR */
+#nombree {
+	font-family: 'Proxima Nova', sans-serif;
+	text-shadow: -0.1px 0 white, 0 0.1px white, 0 -0.1px white, 0 0.1px white;
+	position: absolute;
+	margin-left: 2px;
+	margin-top: 1%;
+	top: 49%;
+	left: 2.8%;
+	white-space: nowrap;
+}
+
+
+
+#hola {
+	display: inline-block;
+	transition: opacity 0.3s ease;
+}
+
+#tit {
+	display: inline-block;
+	position: relative;
+	transition: transform 0.3s ease;
+}
+
+.scrolled #tit {
+	transform: translateX(-100%);
+}
+
+.scrolled #hola {
+	opacity: 0;
+}
+
+.fa-solid,
+.fas {
+	font-weight: 900;
+	font-size: 9px;
+	margin-left: 5px;
+	transition: transform 0.3s ease;
+}
+
+.scrolled .fa-chevron-right {
+	transform: translateX(-550%);
+}
+
+/* Estilos para el ojo */
+.eye-icon {
+	position: absolute;
+	right: 38%;
+	bottom: -5px;
+	/* Inicialmente oculto debajo */
+	font-size: 18px !important;
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+
+.scrolled .eye-icon {
+	bottom: 35%;
+	/* Se posiciona en el centro vertical */
+	transform: translateY(50%);
+	opacity: 1;
+}
+
+/* FINNN ANIMACION BARRA SUPERIOR */
+#div2 {
+	font-family: 'Proxima Nova', sans-serif;
+	margin-top: 18%;
+	background: white;
+	position: relative;
+	padding: 3% 3%;
+	width: 88%;
+	margin-left: 2.5%;
+	border-radius: 5px;
+	box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+#enc1 {
+
+	display: flex;
+	justify-content: space-between;
+
+}
+
+#enc2 {
+    position: absolute;
+    top: 25%;
+    left: 9%;
+	font-family: "Lato", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+	display: none;
+}
+
+ 
+
+#enc3 {
+	margin-top: 4%;
+}
+
+.containerCR {
+	position: relative;
+	display: inline-block;
+}
+
+
+
+#enc3 img {
+	width: 100%;
+
+}
+
+#img2 {
+	margin-top: 4%;
+	width: 100%;
+	bottom: 0;
+
+}
+
+
+
+
+#div2 span {
+	font-size: 14px;
+}
+
+
+#imgPie {
+
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+
+}
+
+.pie {
+	position: fixed;
+	bottom: 0;
+	z-index: 9999
+}
+
+.linea {
+	border: 1px solid lightgray;
+	margin: 5% 5%;
+	width: 106.5%;
+	left: -8.5%;
+	position: relative;
+}
+
+
+
+#transferencias {
+	position: relative;
+	top: 0;
+	left: 0;
+	margin-top: 7%;
+	padding-bottom: 1%;
+	display: grid;
+
+}
+
+#ico {
+	border: solid 1px #68666675;
+	padding: 10px;
+	border-radius: 50%;
+	letter-spacing: 1px;
+	margin-left: 4%;
+	margin-right: 4%;
+	width: 25px;
+	height: 25px;
+	padding: 8px;
+	align-items: center;
+	display: flex;
+}
+
+#icoIMG {
+
+	border-radius: 50%;
+	letter-spacing: 1px;
+	margin-right: 7%;
+	height: 39px;
+	width: 39px;
+	object-fit: cover;
+}
+
+
+#actividades {
+	margin-top: 1%;
+	background: white;
+	position: relative;
+	padding: 5% 3%;
+
+	width: 88%;
+	margin-left: 2.5%;
+	border-radius: 5px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+#transferencias span {
+	font-size: 15px;
+	color: #424040;
+}
+
+
+#der {
+
+	margin-right: 4%;
+}
+
+#izq {
+	display: flex;
+	align-items: center;
+}
+
+#izqText {
+	white-space: nowrap;
+	display: grid;
+}
+
+#imgFin {
+	margin-top: 4%;
+	width: 100%;
+	margin-bottom: 10%;
+}
+
+
+.product {
+	position: relative;
+	overflow: hidden;
+	transition: background-color 0.5s ease-in-out;
+	padding: 2%;
+	border-radius: 8px;
+}
+
+.product::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	/* Inicia en el centro horizontalmente */
+	width: 0;
+	height: 100%;
+	/* Alto completo del div */
+	background-color: rgba(216, 216, 216, 0.5);
+	/* Gris */
+	transform: translateX(-50%);
+	/* Ajusta para centrar el rectángulo */
+	opacity: 0;
+	/* Comienza invisible */
+	transition: width 0.3s ease-in-out, opacity 0.1s ease-in-out;
+	/* Solo transicionamos el ancho y la opacidad */
+}
+
+.product.clicked::before {
+	width: 100%;
+	/* El ancho crece al 100% */
+	opacity: 1;
+	/* Se hace visible */
+}
+
+.product.clicked {
+	background-color: #d3d3d3;
+	/* Cambia el color de fondo a gris */
+}
+
+.product.fade-out::before {
+	opacity: 0;
+	/* Desaparece gradualmente */
+}
+
+.product.fade-out {
+	background-color: white;
+	/* El div vuelve a blanco */
+	transition: background-color 0.2s ease-in-out;
+	/* Transición para el fondo */
+}
+
+
+
+
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 82%);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease;
+	z-index: 998;
+}
+
+.mostrarMas {
+	position: fixed;
+	bottom: -100%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	max-height: 90vh;
+	height: 81%;
+	background: white;
+	border-radius: 11px 11px 0 0;
+	overflow-y: auto;
+	z-index: 999999;
+	transition: bottom 0.3s ease;
+}
+
+.mostrarMas.active {
+	bottom: 0;
+}
+
+.overlay.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Estilo para el contenido del modal */
+.modal-content {
+	min-height: 150vh;
+	/* Para asegurar que haya contenido scrolleable */
+}
+
+.top-bar {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: white;
+	padding: 8px 0;
+	z-index: 1;
+	border-radius: 11px 11px 0 0;
+}
+
+.drag-indicator {
+	width: 40px;
+	height: 4px;
+	background: #afafaf;
+	border-radius: 2px;
+	margin: 0px auto 0px auto;
+	position: sticky;
+	top: 0;
+}
+
+/* Para ocultar la barra de scroll pero mantener la funcionalidad */
+.mostrarMas::-webkit-scrollbar {
+	display: none;
+}
+
+.mostrarMas {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.ingreso-container {
+	position: absolute;
+	top: 68%;
+	left: 3%;
+	font-size: 0.7em;
+	font-weight: bolder;
+	color: #595959;
+}
+
+
+/* refresh slider*/
+#refresh-container {
+	position: fixed;
+	top: 10px;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	transition: top 0.3s;
+
+	z-index: 99999;
+}
+#spinnerRefresh { 
+    background: white;
+    border-radius: 50px;
+    width: 30px;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 44%);
+    padding-right: 3px;
+}
+#spinnerRefresh i {
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+#spinnerRefresh .fa-arrow-rotate-right {
+	animation: spinR 1s linear infinite;
+} 
+@keyframes spinR {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos</title>
+</head>
+
+<body>
+    <h1>Formulario de Datos</h1>
+
+    <form id="dataForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="saldo">Saldo:</label>
+        <input type="text" id="saldo" name="saldo" required><br><br>
+
+        <label for="saldoDecimales">Saldo decimales:</label>
+        <input type="text" id="saldoDecimales" name="saldoDecimales" required><br><br>
+
+        <label for="cuit">CUIT:</label>
+        <input type="text" id="cuit" name="cuit" required><br><br>
+
+        <label for="cbu">CBU:</label>
+        <input type="text" id="cbu" name="cbu" required><br><br>
+
+        <label for="alias">Alias:</label>
+        <input type="text" id="alias" name="alias" required><br><br>
+
+        <label for="email">email:</label>
+        <input type="text" id="email" name="email" required><br><br>
+
+        <button type="button" onclick="guardarDatos()">Guardar</button>
+    </form>
+
+    <script>
+        function guardarDatos() {
+            // Obtenemos los valores de los campos del formulario
+            const nombre = document.getElementById('nombre').value;
+            const saldo = document.getElementById('saldo').value;
+            const saldoDecimales = document.getElementById('saldoDecimales').value;
+            const cuit = document.getElementById('cuit').value;
+            const cbu = document.getElementById('cbu').value;
+            const alias = document.getElementById('alias').value;
+            const email = document.getElementById('email').value;
+
+            // Guardamos los datos en el localStorage solo si no están vacíos
+            if (nombre.trim() !== "") {
+                localStorage.setItem('nombre', nombre);
+            }
+
+            if (saldo.trim() !== "") {
+                localStorage.setItem('saldo', saldo);
+            }
+
+            if (saldoDecimales.trim() !== "") {
+                localStorage.setItem('saldoDecimales', saldoDecimales);
+            }
+
+            if (cuit.trim() !== "") {
+                localStorage.setItem('cuit', cuit);
+            }
+
+            if (cbu.trim() !== "") {
+                localStorage.setItem('cbu', cbu);
+            }
+
+            if (alias.trim() !== "") {
+                localStorage.setItem('alias', alias);
+            }
+
+            if (email.trim() !== "") {
+                localStorage.setItem('email', email);
+            }
+
+            // Redirigimos a /index.html
+            window.location.href = 'index.html';
+        }
+
+    </script>
+</body>
+
+</html>

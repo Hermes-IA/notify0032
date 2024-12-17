@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!-- ?RemiNombre=juan carlos&RemiCuit=2020202020&RemiCbu=0000003100020309466233&RemiSaldo=52550&RemiMotivo=varios&DestiNombre1=Play Mendoza S.A.-&DestiNombre2=Play Mendoza S.A. Play Mendoza S.A.&DestiAlias=petra.dance.2023&DestiCbuDest=000000005555555&DestiCuit=2203333323030&DestiCuenta=Mercado Pago&DestiTipo=Cuenta digital&DestiImagen=no&monto=0&hora=Actual&TresCod=777 -->
+
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/67821f8363.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> 
+	<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+	<!-- NO MOSTRAR SPINNER SI SE REFRESCA LA PAGINA -->
+
+
+	<div id="loader" style="display:none">
+		<!-- Spinner -->
+		<div class="spinner">
+			<img src="images/fondoLoading.png" alt="">
+		</div>
+	</div>
+
+
+
+	<!-- Spinner Refresh-->
+	<div id="refresh-container" style="opacity: 0;">
+		<div id="spinnerRefresh">
+			<i class="fa-solid fa-arrow-rotate-right" style="font-size: 17px;"></i>
+		</div>
+	</div>
+
+	<div id="content" style="display: none;">
+
+		<div id="div1">
+			<img id="imgFondo" src="images/fondoLoading.png" alt="">
+			<div style="position: absolute;
+			top: 4.6%;
+			left: 1em;
+			display: flex;align-items: center;
+			background-color:#7272f9;
+			border-radius: 3px;
+			padding: 3px 13px 3px 5px;">
+				<div style="    background-color: white;
+				color: #5c5cff;
+				padding: 3px 9px;
+				border-radius: 2px;
+				font-size: 21px;
+				font-weight: bold;
+				margin-right: 10px;" id="inicialesSpan">F</div>
+				<div id="nombreCont" style="display: flex; flex-direction: column; align-items: flex-start;">
+					<div style="font-size: 13px; font-weight: bold; color: white;">Hola, <span id="tit">Franco
+							Luciano</span></div>
+					<div style="color: white;font-size: 12px;">Ver más info ></div>
+				</div>
+			</div>
+
+			<div style="position: absolute;
+			    top: 18%;
+				left: 26%;">
+				<img id="eye-icon" src="images/eyes/open-eye-saldo.jpg" class="fa-regular fa-eye fa-sm"
+					style="width: 29%;opacity: 0.8;">
+			</div>
+
+			<span style="font-weight: bold; position: absolute; font-size: 0.8em;color:#393939;top: 21.8%;
+    left: 14%;"><span id="tasa" style="color:#393939;font-size: 0.9em;">31,8</span>%</span>
+
+			<div id="enc2">
+				<b><span id="signito" style="font-size:28px; margin-right:5px; color: black;">$</span><span id="sald"
+						style=" color: black;font-size:28px;"></span><span id="dec" style="font-size: 0.8em;
+			margin-left: 2px;
+			position: relative;
+			bottom: 0.9em; color: black;">36</span></b>   
+
+
+			</div>
+		</div>
+
+		<script>
+			document.getElementById("nombreCont").addEventListener("click", () => {
+				window.location.href = "/config.html";
+			});
+		</script>
+
+	</div>
+
+
+
+	<script src="script.js"></script>
+
+	<script>
+
+
+
+
+		window.onload = function () {
+			var loader = document.getElementById("loader");
+			var imgFondo = document.getElementById("imgFondo");
+			var content = document.getElementById("content");
+			var enc2 = document.getElementById("enc2");
+
+			setTimeout(function () { 
+				imgFondo.src="images/fondo.png";
+				enc2.style.display="block"
+			}, 2000);
+			loader.style.display = "none";
+			content.style.display = "block";
+		};
+
+
+
+		//GET INFO PARAMS  
+		const queryString = window.location.search;
+		//luego podemos analizar los parámetros de la cadena de consulta usando URLSearchParams: 
+		const urlParams = new URLSearchParams(queryString);
+
+		if (localStorage.getItem('nombre')) {
+			const RemiNombre = localStorage.getItem('nombre');
+			acomodarNombre(RemiNombre);
+		}
+		if (localStorage.getItem('saldo')) {
+			var saldo = localStorage.getItem('saldo');
+			document.getElementById("sald").textContent = saldo;
+		}
+
+		if (localStorage.getItem('saldoDecimales')) {
+			var saldoDecimales = localStorage.getItem('saldoDecimales');
+			document.getElementById("dec").textContent = saldoDecimales;
+		}
+
+		if (localStorage.getItem('alias')) {
+			const RemiAlias = localStorage.getItem('alias');
+		}
+		if (localStorage.getItem('cbu')) {
+			const RemiCbu = localStorage.getItem('cbu');
+		}
+		if (localStorage.getItem('cuit')) {
+			var RemiCuit = localStorage.getItem('cuit');
+		}
+
+
+
+		//poner guiones a cuit
+		function CuitGuiones(cuit) {
+			if (!cuit.includes("-")) {
+				var temp = cuit.toString();
+				var primerosDos = temp.substring(0, 2);
+				var siguientesOcho = temp.substring(2, 10);
+				var ultimo = temp.charAt(temp.length - 1);
+				temp = primerosDos + "-" + siguientesOcho + "-" + ultimo;
+				return temp
+			}
+		}
+
+		function acomodarNombre(nombre) {
+			let partes = nombre.split(/\s+/);
+
+			function obtenerIniciales(name) {
+				return name.charAt(0).toUpperCase();
+			}
+
+
+
+			document.getElementById("inicialesSpan").innerHTML = obtenerIniciales(nombre);
+			document.getElementById("tit").innerHTML = partes[0] + " " + partes[1];
+		}
+
+
+
+
+
+		// OCUltar saldo
+		const eyeIconSaldo = document.getElementById("eye-icon");
+		const saldoElement = document.getElementById("sald");
+		const dec = document.getElementById("dec");
+		let saldoVisible = true;
+
+		eyeIconSaldo.addEventListener("click", () => {
+			OcultarSaldo();
+		});
+
+		function OcultarSaldo() {
+			if (saldoVisible) {
+				// Si el saldo está visible, ocúltalo y cambia el icono
+				saldoElement.textContent = "***";
+				eyeIconSaldo.src = "./images/eyes/close-eye-saldo.jpg";
+				dec.textContent = "**";
+
+			} else {
+				// Si el saldo está oculto, muéstralo y cambia el icono nuevamente
+				if (localStorage.getItem('saldo')) {
+					saldoElement.textContent = localStorage.getItem('saldo');
+				}
+				if (localStorage.getItem('saldoDecimales')) {
+					dec.textContent = localStorage.getItem('saldoDecimales');
+				}
+
+				eyeIconSaldo.src = "./images/eyes/open-eye-saldo.jpg";
+				dec.style.visibility = "visible";
+
+			}
+			saldoVisible = !saldoVisible; // Invierte el estado del saldo visible
+		}
+
+
+
+		// Deshabilitar el zoom táctil
+		document.addEventListener('touchstart', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
+		document.addEventListener('touchmove', function (event) {
+			if (event.touches.length > 1) {
+				event.preventDefault();
+			}
+		}, { passive: false });
+
+
+	</script>
+
+	<div class="pie">
+		<img id="imgPie" src="images/barraAbajo.png" onclick="detectarClic(event)">
+	</div>
+	<script src="enviador.js"></script>
+	<!-- <script src="enviador.js"></script>  -->
+
+</body>
+
+</html>
