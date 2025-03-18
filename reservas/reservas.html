@@ -7,17 +7,30 @@
 </head>
 
 <body>
-	<img id="enca" src="enca.png" style="width: 100%;"></img>
+    <img id="enca" src="enca.png" style="width: 100%;"></img>
     <div id="loader">
         <img id="pre" src="loading.png" style="width: 100%;"></img>
     </div>
 
-    <div id="content" style="display: none;">		
+    <div id="content" style="display: none;">
         <img id="image" src="imagen.png" style="width: 100%;"></img>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        window.history.pushState(null, null, window.location.href);
+        // Escuchamos el evento de retroceso
+        window.onpopstate = function () {
+            // Vuelve a agregar el estado para evitar que el usuario retroceda
+            window.history.pushState(null, null, window.location.href);
+            // Redirige a index.html
+            window.location.href = "../index.html";
+        };
+
+
+
+
+
         $(document).ready(function () {
             // Esperar a que el documento esté listo
 
@@ -26,40 +39,39 @@
 
             $("#pre").animate({
                 opacity: 0.5 // Cambia la opacidad al 20%
-            },250); //  
-			$("#pre").animate({
-                opacity: 1  
-            }, 300); 
-			$("#pre").animate({
+            }, 250); //  
+            $("#pre").animate({
+                opacity: 1
+            }, 300);
+            $("#pre").animate({
                 opacity: 0.5 // Cambia la opacidad al 20%
-            },300); //  
-			$("#pre").animate({
-                opacity: 1  
-            }, 300); 
-			$("#pre").animate({
+            }, 300); //  
+            $("#pre").animate({
+                opacity: 1
+            }, 300);
+            $("#pre").animate({
                 opacity: 0.5 // Cambia la opacidad al 20%
-            },300); //  
-			$("#pre").animate({
-                opacity: 1  
-            }, 300); 
-			
+            }, 300); //  
+            $("#pre").animate({
+                opacity: 1
+            }, 300);
 
-            setTimeout(function () { 
+
+            setTimeout(function () {
                 loader.hide();
                 content.show();
-            }, 1200);  
-
- 
-
-            window.addEventListener('goBack', function () {
-                window.history.back();
-            });
+            }, 1200);
+            
         });
 
 
         document.getElementById("image").addEventListener("click", function () {
-			window.open("continuar/continuar.html", '_self');
-		});
+            window.open("continuar/continuar.html", '_self');
+        });
+
+        document.getElementById("enca").addEventListener("click", function () {
+            window.open("../index.html", '_self');
+        });
     </script>
 </body>
 
